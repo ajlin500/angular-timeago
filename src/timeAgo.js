@@ -12,26 +12,13 @@ angular.module('yaru22.angular-timeago', [
     restrict: 'EA',
     link: function(scope, elem) {
       var fromTime = timeAgo.parse(scope.fromTime);
-
-      // Track changes to time difference
-      scope.$watch(function () {
-        return nowTime() - fromTime;
-      }, function(value) {
-        angular.element(elem).text(timeAgo.inWords(value, fromTime, scope.format));
-      });
+      var value = nowTime() - fromTime;
+      angular.element(elem).text(timeAgo.inWords(value, fromTime, scope.format));
     }
   };
 }]).factory('nowTime', function ($timeout) {
-  var nowTime;
-
-  function updateTime() {
-    nowTime = Date.now();
-    $timeout(updateTime, 1000);
-  }
-  updateTime();
-
   return function () {
-    return nowTime;
+    return Date.now();
   };
 }).factory('timeAgo', ['$filter', function ($filter) {
   var service = {};
