@@ -52,7 +52,8 @@ angular.module('yaru22.angular-timeago', [
         prefixFromNow: null,
         suffixAgo: 'ago',
         suffixFromNow: 'from now',
-        seconds: 'less than a minute',
+        seconds: 'a second',
+        seconds: '%d seconds',
         minute: 'a minute',
         minutes: '%d minutes',
         hour: 'an hour',
@@ -295,7 +296,8 @@ angular.module('yaru22.angular-timeago', [
       return string.replace(/%d/i, value);
     }
 
-    var words = seconds < 45 && substitute($l.seconds, Math.round(seconds)) ||
+    var words = seconds < 1.5 && substitute($l.second, 1) ||
+        seconds < 59 && substitute($l.seconds, Math.round(seconds)) ||
         seconds < 90 && substitute($l.minute, 1) ||
         minutes < 45 && substitute($l.minutes, Math.round(minutes)) ||
         minutes < 90 && substitute($l.hour, 1) ||
