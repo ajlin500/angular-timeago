@@ -52,7 +52,7 @@ angular.module('yaru22.angular-timeago', [
         prefixFromNow: null,
         suffixAgo: 'ago',
         suffixFromNow: 'from now',
-        seconds: 'a second',
+        second: 'a second',
         seconds: '%d seconds',
         minute: 'a minute',
         minutes: '%d minutes',
